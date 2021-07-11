@@ -13,6 +13,7 @@ class CircleShader extends FlxShader
 
 		float circleA(in vec2 _st, in float _radius){
 			vec2 dist = _st-vec2(0.5);
+			dist.x *= openfl_TextureSize.x / openfl_TextureSize.y;
 			return 1.-smoothstep(_radius-(_radius*0.01),
 								_radius+(_radius*0.01),
 								dot(dist,dist)*4.0);
@@ -20,7 +21,9 @@ class CircleShader extends FlxShader
 
 		float circleB(vec2 position, float radius)
 		{
-			return smoothstep(radius, radius, length(position - vec2(0.5)));
+			vec2 dist = position - vec2(0.5);
+			dist.x *= openfl_TextureSize.x / openfl_TextureSize.y;
+			return smoothstep(radius, radius, length(dist));
 		}
 
         void main()
