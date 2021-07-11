@@ -27,11 +27,11 @@ class CircleShader extends FlxShader
         {
 			if(useCircleALogic){
 				c = circleA(openfl_TextureCoordv - (screen_focus_pos.xy / openfl_TextureSize.xy), 0.06);
-				doShade = c > 0.0;
+				doShade = c == 1.0;
 			}
 			else{
 				c = circleB(openfl_TextureCoordv - (screen_focus_pos.xy / openfl_TextureSize.xy), 0.12);
-				doShade = !(c > 0.0);
+				doShade = c == 0.0;
 			}
 
 			if(doShade)
